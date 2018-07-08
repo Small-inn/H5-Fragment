@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>音乐盒</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            list-style-type: none;
+        }
+        ul{
+            width:807px;
+            margin:100px auto;
+            border: 1px solid #000;
+            overflow:hidden;
+            height:40px;
+        }
+        ul li{
+            width:100px;
+            height:40px;
+            border-right:1px dotted red;
+            float: left;
+            position:relative;
+        }
+        ul li:last-child{
+            border-right: 0;
+        }
+        ul li i{
+            position:absolute;
+            width:100%;
+            height:100%;
+            top:40px;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<div class="musicWrap">
+    <audio src="music/a1.mp3"></audio>
+    <audio src="music/a2.mp3"></audio>
+    <audio src="music/a3.mp3"></audio>
+    <audio src="music/a4.mp3"></audio>
+    <audio src="music/a5.mp3"></audio>
+    <audio src="music/a6.mp3"></audio>
+    <audio src="music/a7.mp3"></audio>
+    <audio src="music/a8.mp3"></audio>
+</div>
+<script src="../jquery-3.1.1.min.js"></script>
+<script>
+    $(function () {
+        var i = $('<i></i>');
+        var li = $('li');
+        li.append(i);
+        var arr = ['red','green','pink','yellow','blue','purple','orange','hotpink'];
+
+        $('ul > li > i').each(function (index,ele) {
+            $(ele).css('background-color',arr[index]);
+//            $(this).css('top',0)
+        })
+        $('ul > li').hover(function () {
+            var $index = $(this).index()
+            $(this).children('i').stop().animate({'top':0},500)
+            $('audio')[$index].load()
+            $('audio')[$index].play()
+        },function () {
+            $(this).children('i').stop().animate({'top':'40px'},500)
+        })
+        
+//        键盘按下事件
+        $(window).keydown(function (e) {
+            var Code = e.keyCode;
+
+            if(Code>=49&&Code<=56){
+                var index = Code - 49;
+//                触发鼠标的hover事件
+                $('ul > li').eq(index).mouseenter()
+
+                setTimeout(function () {
+                    $('ul > li').children('i').stop().animate({'top':40},500)
+                },500)
+            }
+        })
+
+    })
+</script>
+</body>
+</html>

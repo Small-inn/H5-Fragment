@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style:none;
+        }
+        .slide{
+            width: 100%;
+            height: 5px;
+            margin-top: 10px;
+        }
+        /* 线性渐变
+        语法：background:linear-gradient(起始位置,颜色一 位置,颜色二 位置 ,颜色三 位置);
+        （1）需要添加私有前缀
+        （2）第一个参数，起始位置  可以接受方位名词 也可以是一个点,
+             也可以是deg 角度  控制的是渐变线的角度 正值是逆时针，负值是顺时针
+        （3）颜色 可以是任意颜色
+			*/
+        .slide1{
+            /* 从左往右*/
+            background: linear-gradient(to right,red,hotpink);
+        }
+        .slide2{
+            /*从左往右依次累加*/
+            background-image: linear-gradient(to right,red 20%,hotpink 40%,skyblue 60%);
+        }
+        .slide3{
+            /*方向可以使用角度代替*/
+            background-image: linear-gradient(90deg,red 20%,hotpink 20%,skyblue);
+        }
+        .slide4{
+            /*同上*/
+            background-image: linear-gradient(270deg, red 20%, black 40%, green 60%, blue 80%, orange 100%);
+        }
+
+
+
+        /*
+            径向渐变:
+            语法：backround:radial-gradient(起始位置，颜色一 位置，颜色二 位置，颜色三 位置)
+            参数：第一个参数，起始位置(可以接受方位名词，可以是一个点，可以是像素 不接受deg)
+        */
+        .radial{
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+        }
+        .radial1{
+            /*点*/
+            background: radial-gradient(50px 50px, red 20%, hotpink 40%, black 60%,blue 80%, yellowgreen 100%);
+        }
+        .radial2{
+            /*基本用法*/
+            background: radial-gradient(hsla(120,70%,60%,.9),hsla(360,60%,60%,.9));
+        }
+        .radial3{
+            /*圆/椭 形渐变*/
+            background: radial-gradient(circle/ellpise,hsla(120,70%,60%,.9),hsla(360,60%,60%,.9));
+        }
+        .radial4{
+            /*圆心定位*/
+            background: radial-gradient(circle at center,rgb(220,75,200),rgb(0,0,75));
+        }
+    </style>
+</head>
+<body>
+    <div class="slide slide1"></div>
+    <div class="slide slide2"></div>
+    <div class="slide slide3"></div>
+    <div class="slide slide4"></div>
+
+    <div class="box">
+        <div class="radial radial1">1</div>
+        <div class="radial radial2">2</div>
+        <div class="radial radial3">3</div>
+        <div class="radial radial4">4</div>
+    </div>
+</body>
+</html>

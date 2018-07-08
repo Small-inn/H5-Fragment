@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: yellowgreen;
+            margin: 20px auto;
+        }
+        div:first-child{
+            margin: 0 auto;
+        }
+        div:nth-child(2){
+            box-shadow: 10px 0;
+        }
+        div:nth-child(3){
+            box-shadow: 10px 10px;
+        }
+        /*第三个参数羽化大小*/
+        div:nth-child(4){
+            box-shadow: 10px 10px 50px;
+        }
+        /*第四个参数表示的阴影的尺寸*/
+        div:nth-child(5){
+            box-shadow: 10px 10px 50px 10px;
+        }
+        /*第五个参数是阴影的颜色，默认是黑色*/
+        div:nth-child(6){
+            box-shadow: 10px 10px 10px 5px #00bbee;
+        }
+        /*第六个参数是内外阴影，默认是外阴影，内阴影是inset*/
+        div:nth-child(7){
+            box-shadow: 10px 10px 10px 5px #00ee00 inset;
+        }
+        /*阴影可以分组写*/
+        div:nth-child(8){
+            box-shadow: 10px 10px 10px 5px #4b72a4,-10px -10px 10px 5px hotpink,-10px 10px 5px red;
+        }
+    </style>
+</head>
+<body>
+<!--字体阴影雷同-->
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>

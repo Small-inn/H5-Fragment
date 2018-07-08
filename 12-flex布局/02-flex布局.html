@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style:none;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        .app{
+            width: 100%;
+            height: 100%;
+        }
+        .app .top{
+            width: 100%;
+            height: 80px;
+            background-color: #ddd;
+        }
+        .app .main{
+            width: 100%;
+            height: auto !important;
+            min-height: 100%;
+            margin-bottom: -80px;
+            padding-bottom: 80px;
+            box-sizing: border-box;
+            background-color: yellowgreen;
+        }
+        .bottom{
+            width: 100%;
+            height: 80px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <div class="top">top</div>
+        <div class="main">main</div>
+    </div>
+    <div class="bottom">bottom</div>
+</body>
+</html>
