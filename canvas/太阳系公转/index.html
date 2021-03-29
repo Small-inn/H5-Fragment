@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>太阳系</title>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    let sun;
+    let earth;
+    let moon;
+    let ctx;
+
+    function init() {
+      sun = new Image();
+      earth = new Image();
+      moon = new Image();
+      sun.src = "https://mdn.mozillademos.org/files/1456/Canvas_sun.png";
+      earth.src = "https://mdn.mozillademos.org/files/1429/Canvas_earth.png";
+      moon.src = "https://mdn.mozillademos.org/files/1443/Canvas_moon.png";
+
+      let canvas = document.querySelector("#canvas");
+      canvas.width = document.body.clientWidth;
+      canvas.height = 768;
+      ctx = canvas.getContext("2d");
+
+      sun.onload = function () {
+        draw()
+      }
+
+    }
+    init();
+
+    function draw() {
+      ctx.clearRect(0, 0, 600, 600); //清空所有的内容
+      /*绘制 太阳*/
+      ctx.drawImage(sun, 0, 0, 600, 600);
+
+      ctx.save();
+      ctx.translate(300, 300);
+
+      //绘制earth轨道
+      ctx.beginPath();
+      ctx.strokeStyle = "rgba(255,255,0,0.5)";
+      ctx.arc(0, 0, 200, 0, 2 * Math.PI)
+      ctx.stroke()
+
+      let time = new Date();
+      //绘制地球
+      ctx.rotate(2 * Math.PI / 60 * time.getSeconds() + 2 * Math.PI / 60000 * time.getMilliseconds())
+      ctx.translate(200, 0);
+      ctx.drawImage(earth, -12, -12)
+
+      //绘制月球轨道
+      ctx.beginPath();
+      ctx.strokeStyle = "rgba(255,255,255,.3)";
+      ctx.arc(0, 0, 40, 0, 2 * Math.PI);
+      // ctx.stroke();
+
+      //绘制月球
+      ctx.rotate(2 * Math.PI / 6 * time.getSeconds() + 2 * Math.PI / 6000 * time.getMilliseconds());
+      ctx.translate(40, 0);
+      ctx.drawImage(moon, -3.5, -3.5);
+      ctx.restore();
+
+      requestAnimationFrame(draw);
+    }
+  </script>
+</body>
+
+</html>

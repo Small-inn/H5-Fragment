@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>透明度</title>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    function draw() {
+      const canvas = document.querySelector('#canvas')
+      canvas.width = document.body.clientWidth
+      canvas.height = document.body.clientHeight
+      if (!canvas.getContext) return
+      const ctx = canvas.getContext('2d')
+      ctx.fillStyle = '#FD0'
+      ctx.fillRect(0, 0, 75, 75)
+      ctx.fillStyle = '#6C0'
+      ctx.fillRect(75, 0, 75, 75)
+      ctx.fillStyle = '#09F'
+      ctx.fillRect(0, 75, 75, 75)
+      ctx.fillStyle = '#F30'
+      ctx.fillRect(75, 75, 75, 75)
+      // 设置透明度
+      ctx.globalAlpha = 0.2
+
+      for (let i = 0; i < 7; i++) {
+        ctx.beginPath()
+        ctx.fillStyle = 'cyan'
+        ctx.arc(75, 75, 10 * (i + 1), 0, Math.PI * 2, false)
+        ctx.fill()
+      }
+    }
+    draw()
+  </script>
+</body>
+
+</html>

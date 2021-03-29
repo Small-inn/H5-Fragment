@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>cavnas虚线</title>
+</head>
+
+<body>
+  <canvas id="cas" width="400" height="300"></canvas>
+  <script>
+    function draw() {
+      const cas = document.querySelector('#cas')
+      if (!cas.getContext) return
+      const ctx = cas.getContext('2d')
+      ctx.setLineDash([20, 5]); // [实线长度, 间隙长度]
+      ctx.lineDashOffset = -0;
+      ctx.strokeRect(50, 50, 210, 210);
+    }
+    draw()
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="cas"></canvas>
+  <script>
+    /**
+     * 
+     * @param x: 小球的x轴位置 
+     * @param y: 小球的y轴位置 
+     * @param x: 小球的x轴位置 
+     * @param r: 小球的半径
+     * @param g: 物理学中的重力加速度
+     * @param vx: 沿x轴方向的速度初始值
+     * @param vy: 沿y轴方向的速度初始值
+     * @param color: 小球的颜色
+     */
+    const ball = {
+      x: 500,
+      y: 100,
+      r: 20,
+      g: 2,
+      vx: -4,
+      vy: 0,
+      color: '#005588'
+    }
+    window.onload = function () {
+      const cas = document.querySelector('#cas')
+      cas.width = 1024
+      cas.height = 768
+      if (!cas.getContext) return
+      const cxt = cas.getContext('2d')
+      setInterval(() => {
+        render(cxt)
+        updata()
+      }, 50)
+    }
+
+    function updata() {
+      ball.x += ball.vx
+      ball.y += ball.vy
+      ball.vy += ball.g
+      // 碰撞检测
+      if (ball.y > 768 - ball.r) {
+        ball.y = 768 - ball.r
+        ball.vy = -ball.vy * 0.6 // 0.5 为现实中的摩擦系数
+      }
+
+      if (ball.x <= ball.r) {
+        ball.y = 768 - ball.r
+        ball.x = ball.r
+        ball.vx = 0
+        ball.vy = 0
+      }
+    }
+
+    function render(cxt) {
+      cxt.clearRect(0, 0, cxt.canvas.width, cxt.canvas.height)
+      cxt.fillStyle = ball.color
+      cxt.beginPath()
+      cxt.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2)
+      cxt.closePath()
+      cxt.fill()
+    }
+  </script>
+</body>
+
+</html>

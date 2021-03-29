@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>cavnas绘制圆形</title>
+</head>
+
+<body>
+  <canvas id="cas" width="800" height="600"></canvas>
+  <script>
+    function draw() {
+      const cas = document.querySelector('#cas')
+      if (!cas.getContext) return
+      const ctx = cas.getContext('2d')
+      for (let i = 0; i < 10; i++) {
+        ctx.beginPath()
+        ctx.arc(i * 25, i * 25, i * 10, 0, Math.PI * 2, true)
+        ctx.closePath()
+        ctx.fillStyle = 'rgba(255, 0, 0, .25)'
+        ctx.fill()
+      }
+    }
+    draw()
+  </script>
+</body>
+
+</html>

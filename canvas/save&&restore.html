@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>save&&restore</title>
+</head>
+
+<body>
+  <canvas id="cas" width="400" height="300"></canvas>
+  <script>
+    function draw() {
+      const cas = document.querySelector('#cas')
+      if (!cas.getContext) return
+      const ctx = cas.getContext('2d')
+
+      ctx.fillRect(0, 0, 20, 20)
+      ctx.save()
+
+      ctx.fillStyle = 'red'
+      ctx.fillRect(25, 25, 20, 20)
+      ctx.save()
+
+      ctx.fillStyle = '#ccc'
+      ctx.fillRect(50, 50, 20, 20)
+
+      ctx.restore()
+      ctx.fillRect(75, 75, 20, 20)
+
+      ctx.restore()
+      ctx.fillRect(100, 100, 20, 20)
+    }
+    draw()
+  </script>
+</body>
+
+</html>

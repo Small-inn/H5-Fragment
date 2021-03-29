@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>cavnas绘制矩形</title>
+</head>
+
+<body>
+  <canvas id="cas" width="400" height="300"></canvas>
+  <script>
+    function draw() {
+      const cas = document.querySelector('#cas')
+      if (!cas.getContext) return
+      const ctx = cas.getContext('2d')
+      ctx.fillStyle = 'rgb(200, 0, 0)'
+      // ctx.strokeStyle = 'cyan'
+      // ctx.lineWidth = 5
+      // ctx.strokeRect(10, 10, 55, 50)
+      ctx.fillRect(10, 10, 55, 50)
+      ctx.fillStyle = 'rgba(0, 0, 200, .5)'
+      ctx.fillRect(30, 30, 55, 50)
+
+      ctx.beginPath()
+      ctx.moveTo(100, 100)
+      ctx.lineTo(125, 125)
+      ctx.lineTo(125, 75)
+      ctx.fill()
+    }
+    draw()
+  </script>
+</body>
+
+</html>

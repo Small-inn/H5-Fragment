@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>用户交互</title>
+</head>
+
+<body>
+  <canvas id="canvas" width="400" height="300"></canvas>
+  <script>
+    window.onload = function () {
+      const cnavas = document.querySelector('#canvas')
+      canvas.width = document.body.clientWidth
+      if (!canvas.getContext) return
+      const ctx = canvas.getContext('2d')
+      canvas.addEventListener('mousedown', (event) => {
+        // getBoundingClientRect canvas获取鼠标的方法
+        var event = event || window.event
+        // 兼容处理，获取当前鼠标相对屏幕的坐标
+        const winX = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft || event.pageX
+        const winY = event.clientY + document.body.scrollTop + document.documentElement.scrollTop || event.pageY
+
+        const can = {
+          x: 0,
+          y: 0
+        }
+        // 调用getBoundingClientRect方法，该方法返回一个对象，包含canvas的left、 top、 width、 height等值
+        const canBox = canvas.getBoundingClientRect()
+        console.log(canBox)
+
+        can.x = (winX - canBox.left) * (canvas.width / canBox.width)
+        can.y = (winY - canBox.top) * (canvas.height / canBox.height)
+
+        console.log(can)
+      })
+    }
+    // window.unload = function() {
+    //   canvas.removeEventListener('mousedown')
+    // }
+  </script>
+</body>
+
+</html>

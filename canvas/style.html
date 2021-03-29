@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>cavnas样式颜色</title>
+</head>
+
+<body>
+  <canvas id="cas" width="400" height="300"></canvas>
+  <script>
+    function draw() {
+      const cas = document.querySelector('#cas')
+      if (!cas.getContext) return
+      const ctx = cas.getContext('2d')
+      for (let i = 0; i < 6; i++) {
+        for (let j = 0; j < 6; j++) {
+          ctx.fillStyle = 'rgb(' + Math.floor(255 - 42.5 * i) + ',' +
+            Math.floor(255 - 42.5 * j) + ',0)'
+          ctx.fillRect(50 * j, i * 50, 50, 50)
+        }
+      }
+    }
+    draw()
+    /** 
+      随机返回[from, to]之间的整数，包括from和to
+    */
+    function randomInt(from, to) {
+      return parseInt(Math.random() * (to - from + 1) + from);
+    }
+  </script>
+</body>
+
+</html>

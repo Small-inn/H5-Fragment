@@ -1,0 +1,13 @@
+通过反三角函数推断出角度
+sin(θ)  --->  Math.sin( θ * Math.PI/180 )
+cos(θ)  --->  Math.cos( θ * Math.PI/180 )
+tan(θ)  --->  Math.tan( θ * Math.PI/180 )
+
+θ = arcsin(x/R) ---> Math.asin(x/R)*(180/Math.PI)
+θ = arccos(y/R) ---> Math.acos(y/R)*(180/Math.PI)
+θ = arctan(x/y) ---> Math.atan(x/y)*(180/Math.PI)
+
+
+canvas中角度的表示采用的是弧度制。
+这样你就可以理解 θ * Math.PI/180是将角度转成弧度，比如：30° = 30 * π /180 = π / 6。
+ 而将弧度转成角度自然就要用弧度值`Math.asin(x/R) 乘上180/Math.PI`

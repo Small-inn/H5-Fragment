@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>绘制线条</title>
+</head>
+
+<body>
+  <canvas id="cas" width="800" height="600"></canvas>
+  <script>
+    function draw() {
+      const cas = document.querySelector('#cas')
+      if (!cas.getContext) return
+      const cxt = cas.getContext('2d')
+      // 状态绘制
+      cxt.beginPath()
+      cxt.moveTo(100, 100)
+      cxt.lineTo(300, 300)
+      cxt.lineTo(100, 300)
+      cxt.lineTo(100, 100)
+
+      cxt.lineWidth = 5
+      cxt.strokeStyle = 'red'
+      cxt.stroke()
+      cxt.closePath()
+
+      cxt.beginPath()
+      cxt.moveTo(200, 100)
+      cxt.lineTo(300, 200)
+
+      cxt.lineWidth = 1
+      cxt.strokeStyle = 'black'
+      cxt.stroke()
+      cxt.closePath()
+
+      // cxt.fillStyle = 'rgb(2, 100, 30)'
+      // cxt.fill()
+
+      
+    }
+    draw()
+  </script>
+</body>
+
+</html>

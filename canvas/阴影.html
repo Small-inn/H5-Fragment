@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>阴影</title>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    function draw() {
+      const canvas = document.querySelector('#canvas')
+      canvas.width = document.body.clientWidth
+      canvas.height = document.body.clientHeight
+      if (!canvas.getContext) return
+      const ctx = canvas.getContext('2d')
+      ctx.shadowOffsetX = 2
+      ctx.shadowOffsetY = 2
+      ctx.shadowBlur = 2
+      ctx.shadowColor = "rgba(0, 0, 0, 0.5)"
+
+      ctx.font = "20px Times New Roman"
+      ctx.fillStyle = "Black"
+      ctx.fillText("Sample String", 5, 30)
+    }
+    draw()
+  </script>
+</body>
+
+</html>

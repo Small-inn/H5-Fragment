@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>cavnas绘制圆形</title>
+</head>
+
+<body>
+  <canvas id="cas" width="800" height="600"></canvas>
+  <script>
+    function draw() {
+      const cas = document.querySelector('#cas')
+      if (!cas.getContext) return
+      const cxt = cas.getContext('2d')
+      for (let i = 0; i < 10; i++) {
+        cxt.beginPath()
+        cxt.arc(50 * (i + 1), 100, 20, 0, Math.PI * 2 * i / 10, true)
+        cxt.closePath()
+        cxt.stroke()
+      }
+
+      for (let i = 0; i < 10; i++) {
+        cxt.beginPath()
+        cxt.arc(50 * (i + 1), 200, 20, 0, Math.PI * 2 * i / 10, true)
+        cxt.stroke()
+      }
+
+      for (let i = 0; i < 10; i++) {
+        cxt.beginPath()
+        cxt.arc(50 * (i + 1), 300, 20, 0, Math.PI * 2 * i / 10, false)
+        cxt.stroke()
+      }
+
+      for (let i = 0; i < 10; i++) {
+        cxt.fillStyle = 'cyan'
+        cxt.beginPath()
+        cxt.arc(50 * (i + 1), 400, 20, 0, Math.PI * 2 * i / 10, false)
+        // cxt.stroke()
+        cxt.fill()
+      }
+    }
+    draw()
+  </script>
+</body>
+
+</html>
